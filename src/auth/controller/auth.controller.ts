@@ -6,8 +6,8 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 import { AuthService } from '../service/auth.service';
-import { UsersService } from 'src/users/service/users.service';
-import { CreateUsersDto } from 'src/users/dto/create-users.dto';
+import { UsersService } from '../../users/service/users.service';
+import { CreateUsersDto } from '../../users/dto/create-users.dto';
 
 @Controller('auth')
 export class AuthController {
