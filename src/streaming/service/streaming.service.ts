@@ -55,17 +55,19 @@ export class StreamingService {
       throw new NotFoundException(`Streaming with id ${id} not found`);
     }
 
-    const duplicate = await this.streamingRepository.findOne({
-      where: { title: streaming.title },
-    });
+    if (streaming.title) {
+      const duplicate = await this.streamingRepository.findOne({
+        where: { title: streaming.title },
+      });
 
-    if (duplicate && duplicate.id !== id) {
-      throw new ConflictException(
-        `Streaming with title "${streaming.title}" already exists`,
-      );
+      if (duplicate && duplicate.id !== id) {
+        throw new ConflictException(
+          `Streaming with title "${streaming.title}" already exists`,
+        );
+      }
     }
-
-    return await this.streamingRepository.save(streaming);
+    const updated = this.streamingRepository.merge(existing, streaming);
+    return await this.streamingRepository.save(updated);
   }
 
   async delete(id: number): Promise<DeleteResult> {
