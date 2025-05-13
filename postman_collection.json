@@ -1,0 +1,251 @@
+{
+	"info": {
+		"_postman_id": "12762829-c7e5-48b9-8a9c-86a79e205132",
+		"name": "Streaming App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9621868"
+	},
+	"item": [
+		{
+			"name": "Streaming",
+			"item": [
+				{
+					"name": "Get list of all records",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/streaming",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"streaming"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create record",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"title\": \"Wild animals of Europe\",\n\"description\": \"Description for Wild animals of Europe\",\n\"thumbnail\": \"https://i.ytimg.com/vi/8BeVmhFURqc/hqdefault.jpg?sqp=-oaymwEmCKgBEF5IWvKriqkDGQgBFQAAiEIYAdgBAeIBCggYEAIYBjgBQAE=&rs=AOn4CLB8FllfmgaLLu9eGGQICvbUTW8gEQ\",\n\"videoUrl\": \"https://www.youtube.com/watch?v=8BeVmhFURqc&list=PLUQS0IH7pX5TM7WI_FTM2lZwhOT2dqJAX&index=1&ab_channel=vaandervik\",\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/streaming",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"streaming"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get record by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/streaming/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"streaming",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update record",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Wild animals of Europe 111\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/streaming/6",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"streaming",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete record by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/streaming/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"streaming",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const myData = pm.response.json();",
+									"",
+									"pm.environment.set('token', myData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"Qwerty1!\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get list of all records",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get record by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
