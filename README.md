@@ -31,3 +31,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ## Postman
 JSON file with postman collection is in the root directory of this project.
 Create a new environment and add the "url" variable, set its value to http://localhost:3000
+
+## Credentials for authentication
+username: admin
+password: Qwerty1!
